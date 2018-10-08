@@ -1,18 +1,11 @@
 class Console
-  BOARD = "_____________\n"\
-          "|   |   |   |\n"\
-          "|___|___|___|\n"\
-          "|   |   |   |\n"\
-          "|___|___|___|\n"\
-          "|   |   |   |\n"\
-          "|___|___|___|\n"
-
   def initialize(cli)
     @cli = cli
   end
 
   def print_board(board)
-    # TODO clear the console
+    puts "\e[H\e[2J" # Clears console
+
     @cli.say "_____________\n"
     (0...board.columns).each do |i|
       @cli.say "| "

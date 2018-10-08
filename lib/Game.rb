@@ -1,6 +1,5 @@
 require_relative './models/Board'
 
-# TODO Change the name of the file.
 class Game # TODO this has a huge bottle neck with all the looping. Improve algorithm
   attr_accessor :player1
   attr_accessor :player2
@@ -23,7 +22,7 @@ class Game # TODO this has a huge bottle neck with all the looping. Improve algo
   end
 
   def has_ended?
-    (@board.is_board_complete? == true) || (@board.has_won?(@player1) == true) || (@board.has_won?(@player2) == true)
+    @board.is_board_complete? || @board.has_won?(@player1) || @board.has_won?(@player2)
   end
 
   def winner
