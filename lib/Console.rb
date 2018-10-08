@@ -10,7 +10,7 @@ class Console
     (0...board.columns).each do |i|
       @cli.say "| "
       (0...board.rows).each do |j|
-        token = board.get_tile(i,j).get_check
+        token = board.tile(i, j).get_check
         @cli.say "#{token} | "
       end
       @cli.say "\n_____________\n"

@@ -16,9 +16,40 @@ class Board
     end
   end
 
-  # TODO naming convention - erase the get.
-  def get_tile(row, column)
+  def tile(row, column)
     @board[row][column]
+  end
+
+  def row(row)
+    @board[row]
+  end
+
+  def column(column)
+    tiles = []
+    @board.each do |row|
+      tiles << row[column]
+    end
+    tiles
+  end
+
+  def diagonal
+    tiles = []
+    i = 0
+    @board.each do |row|
+      tiles << row[i]
+      i+=1
+    end
+    tiles
+  end
+
+  def anti_diagonal
+    tiles = []
+    i = @columns - 1
+    @board.each do |row|
+      tiles << row[i]
+      i-=1
+    end
+    tiles
   end
 
   def check_tile(row, column, player)
@@ -72,37 +103,5 @@ class Board
     return true if bingo
 
     false
-  end
-
-  def row(row)
-    @board[row]
-  end
-
-  def column(column)
-    tiles = []
-    @board.each do |row|
-      tiles << row[column]
-    end
-    tiles
-  end
-
-  def diagonal
-    tiles = []
-    i = 0
-    @board.each do |row|
-      tiles << row[i]
-      i+=1
-    end
-    tiles
-  end
-
-  def anti_diagonal
-    tiles = []
-    i = @columns - 1
-    @board.each do |row|
-      tiles << row[i]
-      i-=1
-    end
-    tiles
   end
 end

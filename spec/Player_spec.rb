@@ -12,6 +12,6 @@ RSpec.describe Player do
     board = Board.new(3, 3)
     player = Player.new('X')
     player.make_move(board, 0, 0)
-    expect(board.get_tile(0,0).get_check).to eql('X')
+    expect(board.tile(0, 0).get_check).to eql('X')
   end
 end

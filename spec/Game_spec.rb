@@ -14,8 +14,8 @@ RSpec.describe Game do
     player2 = Player.new('O')
     game = Game.new(player1, player2)
     game.make_move(1,2)
-    expect(game.board.get_tile(1,2).is_checked?).to eql(true)
-    expect(game.board.get_tile(1,2).get_check).to eql(player1.symbol)
+    expect(game.board.tile(1, 2).is_checked?).to eql(true)
+    expect(game.board.tile(1, 2).get_check).to eql(player1.symbol)
   end
 
   it "Toggle the current player" do

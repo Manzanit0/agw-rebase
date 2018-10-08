@@ -8,21 +8,21 @@ RSpec.describe Board do
     board = Board.new(3, 3)
     for i in 0..2 do
       for j in 0..2 do
-        expect(board.get_tile(i, j)).is_a?(Tile.class)
+        expect(board.tile(i, j)).is_a?(Tile.class)
       end
     end
   end
 
   it "Returns the tile given the coordinates" do
     board = Board.new(3,3)
-    expect(board.get_tile(1,2)).is_a?(Tile.class) #TODO this should probably access the private board instance to check
+    expect(board.tile(1, 2)).is_a?(Tile.class) #TODO this should probably access the private board instance to check
   end
 
   it "Checks a tile with the player's symbol" do
     player = Player.new('X')
     board = Board.new(3,3)
     board.check_tile(1,2, player)
-    expect(board.get_tile(1,2).get_check).to eql('X')
+    expect(board.tile(1, 2).get_check).to eql('X')
   end
 
   it "Validates if all the tiles are checked" do
@@ -35,25 +35,25 @@ RSpec.describe Board do
   it "Return a column of tiles given the position within the matrix" do
     board = Board.new(3, 3)
     column = board.column(2)
-    expect(column[0]).to eql(board.get_tile(0,2))
-    expect(column[1]).to eql(board.get_tile(1,2))
-    expect(column[2]).to eql(board.get_tile(2,2))
+    expect(column[0]).to eql(board.tile(0, 2))
+    expect(column[1]).to eql(board.tile(1, 2))
+    expect(column[2]).to eql(board.tile(2, 2))
   end
 
   it "Get the diagonal of the board" do
     board = Board.new(3, 3)
     diagonal = board.diagonal
-    expect(diagonal[0]).to eql(board.get_tile(0,0))
-    expect(diagonal[1]).to eql(board.get_tile(1,1))
-    expect(diagonal[2]).to eql(board.get_tile(2,2))
+    expect(diagonal[0]).to eql(board.tile(0, 0))
+    expect(diagonal[1]).to eql(board.tile(1, 1))
+    expect(diagonal[2]).to eql(board.tile(2, 2))
   end
 
   it "Get the anti-diagonal of the board" do
     board = Board.new(3, 3)
     diagonal = board.anti_diagonal
-    expect(diagonal[0]).to eql(board.get_tile(0,2))
-    expect(diagonal[1]).to eql(board.get_tile(1,1))
-    expect(diagonal[2]).to eql(board.get_tile(2,0))
+    expect(diagonal[0]).to eql(board.tile(0, 2))
+    expect(diagonal[1]).to eql(board.tile(1, 1))
+    expect(diagonal[2]).to eql(board.tile(2, 0))
   end
 
   it "Mark the board as finished/won if a player has a whole ROW checked" do
