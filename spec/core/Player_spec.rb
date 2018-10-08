@@ -1,6 +1,6 @@
-require('rspec')
-require_relative('../lib/models/Player')
-require_relative('../lib/models/Board')
+require 'rspec'
+require_relative '../../lib/core/Player'
+require_relative '../../lib/core/Board'
 
 RSpec.describe Player do
   it "Initializes with a symbol" do

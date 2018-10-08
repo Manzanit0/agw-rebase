@@ -1,4 +1,4 @@
-require_relative './models/Board'
+require_relative 'Board'
 
 class Game # TODO this has a huge bottle neck with all the looping. Improve algorithm
   attr_accessor :player1

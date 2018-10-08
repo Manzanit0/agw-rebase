@@ -1,7 +1,7 @@
-require('rspec')
-require_relative('../lib/models/Board')
-require_relative('../lib/models/Tile')
-require_relative('../lib/models/Player')
+require 'rspec'
+require_relative '../../lib/core/Board'
+require_relative '../../lib/core/Tile'
+require_relative '../../lib/core/Player'
 
 RSpec.describe Board do
   it "Populates the board with tiles on init" do

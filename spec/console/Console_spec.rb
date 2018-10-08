@@ -1,6 +1,6 @@
 require 'rspec'
 require 'highline'
-require_relative '../lib/Console'
+require_relative '../../lib/console/Console'
 
 RSpec.describe Console do
   before do

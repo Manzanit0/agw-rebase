@@ -1,6 +1,6 @@
-require('rspec')
-require_relative('../lib/models/Tile')
-require_relative('../lib/models/Player')
+require 'rspec'
+require_relative '../../lib/core/Tile'
+require_relative '../../lib/core/Player'
 
 RSpec.describe Tile do
   it "The tile gets checked by a player" do

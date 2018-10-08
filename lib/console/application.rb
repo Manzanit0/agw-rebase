@@ -1,7 +1,7 @@
 require 'highline'
 require_relative 'Console'
-require_relative 'Game'
-require_relative './models/Player'
+require_relative '../../lib/core/Game'
+require_relative '../../lib/core/Player'
 
 highline = HighLine.new
 console = Console.new(highline)
