@@ -67,29 +67,44 @@ class Board
 
   # TODO Refactor logic. Extract duplication.
   def has_won?(player)
+    column_win = true
+    row_win = true
+    #diagonal_win = false
+
+    (0...@rows).each do |row|
+      (0...@columns).each do |column|
+        row_win = false if @board[row][column].get_check != player.symbol
+        column_win = false if @board[column][row].get_check != player.symbol
+      end
+      return true if (row_win || column_win)
+      row_win = true
+      column_win = true
+    end
+
+
     # Row checking
-    @board.each do |row|
-    bingo = true # whole row is checked by the same player.
-      previous_check = player.symbol
-      row.each do |tile|
-        bingo = false if tile.get_check != previous_check
-      end
-      return true if bingo
-    end
-
-    # Column checking
-    i = 0
-    @board.each do
-      bingo = true
-      column = column(i)
-      previous_check = player.symbol
-      column.each do |tile|
-        bingo = false if tile.get_check != previous_check
-      end
-      return true if bingo
-      i += 1
-    end
-
+    # @board.each do |row|
+    # bingo = true # whole row is checked by the same player.
+    #   previous_check = player.symbol
+    #   row.each do |tile|
+    #     bingo = false if tile.get_check != previous_check
+    #   end
+    #   return true if bingo
+    # end
+    #
+    # # Column checking
+    # i = 0
+    # @board.each do
+    #   bingo = true
+    #   column = column(i)
+    #   previous_check = player.symbol
+    #   column.each do |tile|
+    #     bingo = false if tile.get_check != previous_check
+    #   end
+    #   return true if bingo
+    #   i += 1
+    # end
+    #
     bingo = true
     diagonal.each do |tile|
      bingo = false if tile.get_check != player.symbol
