@@ -65,31 +65,26 @@ class Board
     true
   end
 
-  # TODO Refactor logic. Extract duplication.
   def has_won?(player)
-    column_win, row_win, diagonal_win = true, true, true
+    column_win, row_win, diagonal_win, anti_diagonal_win = true, true, true, true
 
     (0...@rows).each do |row|
       (0...@columns).each do |column|
         row_win = false if @board[row][column].get_check != player.symbol
         column_win = false if @board[column][row].get_check != player.symbol
         diagonal_win = false if row == column && @board[row][column].get_check != player.symbol
+        anti_diagonal_win = false if @board[row][@columns-1-row].get_check != player.symbol
       end
 
       return true if (
         row_win ||
         column_win ||
-        (diagonal_win && (row == @rows - 1))
+        (diagonal_win && (row == @rows - 1)) ||
+        (anti_diagonal_win && (row == @rows - 1))
       )
 
       column_win, row_win = true, true
     end
-
-    bingo = true
-    anti_diagonal.each do |tile|
-     bingo = false if tile.get_check != player.symbol
-    end
-    return true if bingo
 
     false
   end

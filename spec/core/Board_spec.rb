@@ -131,7 +131,7 @@ RSpec.describe Board do
     expect(board.has_won?(player1)).to eql(false)
   end
 
-  it "A player hasn't won if there is a tile missing in the diagonal(2)" do
+  it "A player hasn't won if there is a tile missing in the diagonal (part II)" do
     player1 = Player.new('X')
     board = Board.new(3, 3)
     board.check_tile(0,0, player1)
@@ -148,5 +148,14 @@ RSpec.describe Board do
     board.check_tile(2,0, player1)
 
     expect(board.has_won?(player1)).to eql(true)
+  end
+
+  it "A player hasn't won if there is a tile missing in the anti-diagonal" do
+    player1 = Player.new('X')
+    board = Board.new(3, 3)
+    board.check_tile(0,2, player1)
+    board.check_tile(2,0, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
   end
 end
