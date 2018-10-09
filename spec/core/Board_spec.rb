@@ -66,7 +66,24 @@ RSpec.describe Board do
     expect(board.has_won?(player1)).to eql(true)
   end
 
-  # TODO Make a test for first and last row, as well as one in the middle.
+  it "A player hasn't won if there is a tile missing in the middle row" do
+      player1 = Player.new('X')
+      board = Board.new(3,3)
+      board.check_tile(1, 1, player1)
+      board.check_tile(1, 2, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
+  end
+
+  it "A player hasn't won if there is a tile missing in the last row" do
+    player1 = Player.new('X')
+    board = Board.new(3,3)
+    board.check_tile(2, 1, player1)
+    board.check_tile(2, 2, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
+  end
+
   it "Mark the board as finished/won if a player has a whole COLUMN checked" do
       player1 = Player.new('X')
       board = Board.new(3,3)
@@ -77,6 +94,24 @@ RSpec.describe Board do
     expect(board.has_won?(player1)).to eql(true)
   end
 
+  it "A player hasn't won if there is a tile missing in the first column" do
+    player1 = Player.new('X')
+    board = Board.new(3,3)
+    board.check_tile(0, 0, player1)
+    board.check_tile(1, 0, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
+  end
+
+  it "A player hasn't won if there is a tile missing in the last column" do
+    player1 = Player.new('X')
+    board = Board.new(3,3)
+    board.check_tile(0, 2, player1)
+    board.check_tile(1, 2, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
+  end
+
   it "Mark board as finished/won if a player has the DIAGONAL checked" do
     player1 = Player.new('X')
     board = Board.new(3, 3)
@@ -85,6 +120,24 @@ RSpec.describe Board do
     board.check_tile(2,2, player1)
 
     expect(board.has_won?(player1)).to eql(true)
+  end
+
+  it "A player hasn't won if there is a tile missing in the diagonal" do
+    player1 = Player.new('X')
+    board = Board.new(3, 3)
+    board.check_tile(0,0, player1)
+    board.check_tile(2,2, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
+  end
+
+  it "A player hasn't won if there is a tile missing in the diagonal(2)" do
+    player1 = Player.new('X')
+    board = Board.new(3, 3)
+    board.check_tile(0,0, player1)
+    board.check_tile(1,1, player1)
+
+    expect(board.has_won?(player1)).to eql(false)
   end
 
   it "Mark board as finished/won if a player has the ANTI-DIAGONAL checked" do
