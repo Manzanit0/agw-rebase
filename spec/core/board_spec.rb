@@ -1,6 +1,6 @@
 require 'rspec'
 require 'spec_helper'
-require_relative '../../lib/core/Board'
+require_relative '../../lib/core/board'
 require_relative '../../lib/core/Player'
 
 RSpec.describe Board do

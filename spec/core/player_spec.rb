@@ -1,7 +1,7 @@
 require 'rspec'
 require 'spec_helper'
 require_relative '../../lib/core/Player'
-require_relative '../../lib/core/Board'
+require_relative '../../lib/core/board'
 
 RSpec.describe Player do
   it "Initializes with a symbol" do
