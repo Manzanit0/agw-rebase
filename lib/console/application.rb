@@ -21,3 +21,7 @@ end
 if game.winner != nil
   highline.say "The winner is #{game.winner.symbol}"
 end
+
+# TODO stuff below
+# require_relative ~ smell. Check load path. Might need to set load path. file names are lowercase.
+# break this file down. Tests for this logic.

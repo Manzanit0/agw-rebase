@@ -1,4 +1,5 @@
 require 'rspec'
+require 'spec_helper'
 require_relative '../../lib/core/Game'
 require_relative '../../lib/core/Player'
 

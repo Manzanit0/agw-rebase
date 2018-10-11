@@ -1,10 +1,7 @@
 require_relative 'Board'
 
-class Game # TODO this has a huge bottle neck with all the looping. Improve algorithm
-  attr_accessor :player1
-  attr_accessor :player2
-  attr_accessor :currentPlayer
-  attr_accessor :board
+class Game
+  attr_accessor :board, :currentPlayer
 
   def initialize(player1, player2)
     @player1 = player1
@@ -26,8 +23,8 @@ class Game # TODO this has a huge bottle neck with all the looping. Improve algo
   end
 
   def winner
-    return player1 if @board.has_won?(@player1)
-    return player2 if @board.has_won?(@player2)
+    return @player1 if @board.has_won?(@player1)
+    return @player2 if @board.has_won?(@player2)
     nil
   end
 end

@@ -8,3 +8,4 @@ ruby "2.4.0"
 
 gem 'rspec'
 gem 'highline'
+gem 'simplecov', require: false, group: :test
