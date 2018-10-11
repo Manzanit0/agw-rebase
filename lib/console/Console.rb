@@ -7,10 +7,10 @@ class Console
     puts "\e[H\e[2J" # Clears console
 
     @cli.say "_____________\n"
-    (0...board.columns).each do |i|
+    (0...board.size).each do |i|
       @cli.say "| "
-      (0...board.rows).each do |j|
-        token = board.tile(i, j).get_check
+      (0...board.size).each do |j|
+        token = board.tile(i, j)
         @cli.say "#{token} | "
       end
       @cli.say "\n_____________\n"

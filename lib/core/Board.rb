@@ -1,6 +1,6 @@
-require_relative 'Tile'
-
 class Board
+  UNCHECKED_TILE = ' '
+
   attr_reader :size
 
   def initialize(size)
@@ -10,7 +10,7 @@ class Board
     (0...size).each do |i|
       @board[i] = []
       (0...size).each do
-        @board[i] << Tile.new
+        @board[i] << UNCHECKED_TILE
       end
     end
   end
@@ -52,13 +52,13 @@ class Board
   end
 
   def check_tile(row, column, player)
-    @board[row][column].check(player)
+    @board[row][column] = player.symbol
   end
 
   def is_board_complete?
     @board.each do |row|
       row.each do |tile|
-        return false unless tile.is_checked?
+        return false unless tile != UNCHECKED_TILE
       end
     end
     true
@@ -69,10 +69,10 @@ class Board
 
     (0...@size).each do |row|
       (0...@size).each do |column|
-        row_win = false if @board[row][column].get_check != player.symbol
-        column_win = false if @board[column][row].get_check != player.symbol
-        diagonal_win = false if row == column && @board[row][column].get_check != player.symbol
-        anti_diagonal_win = false if @board[row][@size-1-row].get_check != player.symbol
+        row_win = false if @board[row][column] != player.symbol
+        column_win = false if @board[column][row] != player.symbol
+        diagonal_win = false if row == column && @board[row][column] != player.symbol
+        anti_diagonal_win = false if @board[row][@size-1-row] != player.symbol
       end
 
       return true if (

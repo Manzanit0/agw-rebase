@@ -1,7 +1,6 @@
 require 'rspec'
 require 'spec_helper'
 require_relative '../../lib/core/Board'
-require_relative '../../lib/core/Tile'
 require_relative '../../lib/core/Player'
 
 RSpec.describe Board do
@@ -9,21 +8,16 @@ RSpec.describe Board do
     board = Board.new(3)
     for i in 0..2 do
       for j in 0..2 do
-        expect(board.tile(i, j)).is_a?(Tile.class)
+        expect(board.tile(i, j)).to eql(' ')
       end
     end
-  end
-
-  it "Returns the tile given the coordinates" do
-    board = Board.new(3)
-    expect(board.tile(1, 2)).is_a?(Tile.class) #TODO this should probably access the private board instance to check
   end
 
   it "Checks a tile with the player's symbol" do
     player = Player.new('X')
     board = Board.new(3)
     board.check_tile(1,2, player)
-    expect(board.tile(1, 2).get_check).to eql('X')
+    expect(board.tile(1, 2)).to eql('X')
   end
 
   it "Validates if all the tiles are checked" do
