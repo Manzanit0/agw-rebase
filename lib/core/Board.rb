@@ -1,16 +1,15 @@
 require_relative 'Tile'
 
 class Board
-  attr_reader :rows, :columns
+  attr_reader :size
 
-  def initialize(rows, columns)
-    @rows = rows
-    @columns = columns
+  def initialize(size)
+    @size = size
     @board = []
 
-    (0...rows).each do |i|
+    (0...size).each do |i|
       @board[i] = []
-      (0...columns).each do
+      (0...size).each do
         @board[i] << Tile.new
       end
     end
@@ -44,7 +43,7 @@ class Board
 
   def anti_diagonal
     tiles = []
-    i = @columns - 1
+    i = @size - 1
     @board.each do |row|
       tiles << row[i]
       i-=1
@@ -68,19 +67,19 @@ class Board
   def has_won?(player)
     column_win, row_win, diagonal_win, anti_diagonal_win = true, true, true, true
 
-    (0...@rows).each do |row|
-      (0...@columns).each do |column|
+    (0...@size).each do |row|
+      (0...@size).each do |column|
         row_win = false if @board[row][column].get_check != player.symbol
         column_win = false if @board[column][row].get_check != player.symbol
         diagonal_win = false if row == column && @board[row][column].get_check != player.symbol
-        anti_diagonal_win = false if @board[row][@columns-1-row].get_check != player.symbol
+        anti_diagonal_win = false if @board[row][@size-1-row].get_check != player.symbol
       end
 
       return true if (
         row_win ||
         column_win ||
-        (diagonal_win && (row == @rows - 1)) ||
-        (anti_diagonal_win && (row == @rows - 1))
+        (diagonal_win && (row == @size - 1)) ||
+        (anti_diagonal_win && (row == @size - 1))
       )
 
       column_win, row_win = true, true

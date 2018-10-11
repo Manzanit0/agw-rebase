@@ -7,7 +7,7 @@ class Game
     @player1 = player1
     @player2 = player2
     @currentPlayer = player1
-    @board = Board.new(3,3) # ATM, hardcoded. Down the road, we inyect it.
+    @board = Board.new(3) # ATM, hardcoded. Down the road, we inyect it.
   end
 
   def make_move(row, column)

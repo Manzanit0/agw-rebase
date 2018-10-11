@@ -10,7 +10,7 @@ RSpec.describe Player do
   end
 
   it "Checks a specified tile in the board" do
-    board = Board.new(3, 3)
+    board = Board.new(3)
     player = Player.new('X')
     player.make_move(board, 0, 0)
     expect(board.tile(0, 0).get_check).to eql('X')
