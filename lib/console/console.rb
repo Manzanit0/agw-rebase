@@ -1,6 +1,8 @@
 class Console
-  def initialize(game)
+  def initialize(game, output = $stdout, input = $stdin)
     @game = game
+    @out = output
+    @in = input
   end
 
   def print_board(board)
@@ -12,31 +14,31 @@ class Console
   end
 
   def request_move
-    print "\nPlease input your move (row,column): "
-    answer = gets.chomp
-    r = /^([0-9]),([0-9])$/
+    @out.print "\nPlease input your move (row,column): "
+    answer = @in.gets.chomp
+    r = /^([0-9]),([0-9])$/ #FIXME validate also size.
 
     until answer.match r
-      print "Please input the move with the following format (row,column): "
-      answer = gets.chomp
+      @out.print "Please input the move with the following format (row,column): "
+      answer = @in.gets.chomp
     end
 
     answer.split(",").map {|s| s.to_i}
   end
 
   def clear_console
-    print "\e[H\e[2J"
+    @out.print "\e[H\e[2J"
   end
 
   def print_line_separator
-    print "\n_____________\n"
+    @out.print "\n_____________\n"
   end
 
   def print_row(board, row)
-    print "| "
+    @out.print "| "
       (0...board.size).each do |position|
         token = board.tile(row, position)
-        print "#{token} | "
+        @out.print "#{token} | "
       end
   end
 
@@ -53,7 +55,7 @@ class Console
     end
 
     if @game.winner != nil
-      print "The winner is #{@game.winner.symbol}"
+      @out.print "The winner is #{@game.winner.symbol}"
     end
   end
 end
