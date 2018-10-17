@@ -23,4 +23,20 @@ RSpec.describe Console do
     board = @game.board
     expect{@console.print_board(board)}.to output(EMPTY_BOARD).to_stdout
   end
+
+  it "Accepts correct input and parses it" do
+    $stdin = StringIO.new("1,2")
+    valid_move = @console.request_move
+    expect(valid_move).to eql([1,2])
+  end
+
+  it "Validates wrong input and prompts for input again" do
+    allow($stdin).to receive(:gets).and_return("asdfasdf", "1,1")
+    valid_move = @console.request_move
+    expect(valid_move).to eql([1,1])
+  end
+
+  #TODO Test play display.
+
+  #TODO Test play method - The loop. Should we extract that logic? Yes.
 end

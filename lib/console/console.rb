@@ -13,7 +13,14 @@ class Console
 
   def request_move
     print "\nPlease input your move (row,column): "
-    answer = gets #FIXME Add validation
+    answer = gets.chomp
+    r = /^([0-9]),([0-9])$/
+
+    until answer.match r
+      print "Please input the move with the following format (row,column): "
+      answer = gets.chomp
+    end
+
     answer.split(",").map {|s| s.to_i}
   end
 
