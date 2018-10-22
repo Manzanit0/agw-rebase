@@ -1,7 +1,7 @@
 require 'rspec'
 require 'spec_helper'
-require_relative '../../lib/core/Game'
-require_relative '../../lib/core/Player'
+require 'core/game'
+require 'core/player'
 
 RSpec.describe Game do
   it "Sets a current player when initialized" do

@@ -1,4 +1,4 @@
-require_relative 'board'
+require 'core/board'
 
 class Game
   attr_accessor :board, :currentPlayer
