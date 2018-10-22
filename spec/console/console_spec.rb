@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../../lib/console/console'
+require 'console/console'
 
 RSpec.describe Console do
   before(:each) do

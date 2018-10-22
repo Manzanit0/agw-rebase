@@ -1,7 +1,7 @@
 require 'rspec'
 require 'spec_helper'
-require_relative '../../lib/core/board'
-require_relative '../../lib/core/Player'
+require 'core/board'
+require 'core/player'
 
 RSpec.describe Board do
   it "Populates the board with tiles on init" do
