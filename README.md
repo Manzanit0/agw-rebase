@@ -1,7 +1,10 @@
 ### TicTacToe, *Ruby version*
 
 #### Getting started
-To get started simply install the dependecies via [bundler](https://bundler.io/) and run `application.rb`.
+
+Wanna know the fast way? Simply run `./run.sh`.
+
+If you prefer to do it manually, install the dependecies via [bundler](https://bundler.io/) and run `application.rb`.
 
 ##### Example
  ```
