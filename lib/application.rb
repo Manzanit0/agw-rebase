@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 require 'console/console'
 require 'core/game'
-require 'core/player'
+require 'core/players/human'
 
-player1 = Player.new('X')
-player2 = Player.new('Y')
+player1 = Human.new('X')
+player2 = Human.new('Y')
 game = Game.new(player1, player2)
 console = Console.new(game)
 

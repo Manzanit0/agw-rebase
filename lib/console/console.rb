@@ -49,7 +49,6 @@ class Console
     until @game.has_ended?
       coordinates = request_move
       @game.make_move(coordinates[0], coordinates[1])
-      @game.toggle_player
       clear_console
       print_board(@game.board)
     end

@@ -11,7 +11,9 @@ class Game
   end
 
   def make_move(row, column)
-    @currentPlayer.make_move(@board, row, column)
+    @currentPlayer.assign_move(row, column) # TODO Direct dependency with Human class. Duck type here?
+    @currentPlayer.make_move(@board)
+    toggle_player
   end
 
   def toggle_player
