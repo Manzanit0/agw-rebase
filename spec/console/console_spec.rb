@@ -1,10 +1,10 @@
-require 'rspec'
-require 'console/console'
+require "rspec"
+require "console/console"
 
 RSpec.describe Console do
   before(:each) do
-    player1 = Player.new('x')
-    player2 = Player.new('o')
+    player1 = Player.new("x")
+    player2 = Player.new("o")
     @game = Game.new(player1, player2)
     @output = StringIO.new
     @console = Console.new(@game, @output)
@@ -30,31 +30,6 @@ RSpec.describe Console do
 
     # Assert
     expect(@output.string).to eql(EMPTY_BOARD)
-  end
-
-  it "Accepts correct input and parses it" do
-    # Arrange
-    input = StringIO.new("1,2")
-    @console = Console.new(@game, @output, input)
-
-    # Act
-    valid_move = @console.request_move
-
-    # Assert
-    expect(valid_move).to eql([1,2])
-  end
-
-  it "Validates wrong input and prompts for input again" do
-    # Arrange
-    input = StringIO.new
-    @console = Console.new(@game, @output, input)
-    allow(input).to receive(:gets).and_return("asdfasdf", "1,1")
-
-    # Act
-    valid_move = @console.request_move
-
-    # Assert
-    expect(valid_move).to eql([1,1])
   end
 
   #TODO Test play display.
