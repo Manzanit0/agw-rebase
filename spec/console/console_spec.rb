@@ -7,7 +7,7 @@ RSpec.describe Console do
     player2 = Player.new("o")
     @game = Game.new(player1, player2)
     @output = StringIO.new
-    @console = Console.new(@game, @output)
+    @console = Console.new(@output)
   end
 
   it "Prints an empty board at the start of the game" do

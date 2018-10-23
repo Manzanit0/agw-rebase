@@ -1,8 +1,28 @@
+require "console/game_factory"
+
 class Console
-  def initialize(game, output = $stdout, input = $stdin)
-    @game = game
+  def initialize(output = $stdout, input = $stdin)
     @out = output
     @in = input
+  end
+
+  def print_menu
+    @out.puts "\n--- GAME MODES ---\n"
+    @out.puts "1. Human vs Human"
+    @out.puts "2. Human vs Computer"
+    @out.puts "3. Computer vs Human"
+    @out.puts "4. Computer vs Computer\n"
+    @out.print " Choose a game mode to begin (1-4): "
+  end
+
+  def get_menu_option
+    option = @in.gets.chomp
+    r = /^([1-4])$/
+    until option.match r
+      @out.print "The only valid options are 1 to 4: "
+      option = get_menu_option
+    end
+    option
   end
 
   def print_board(board)
@@ -30,6 +50,11 @@ class Console
   end
 
   def play
+    print_menu
+    option = get_menu_option
+    factory = GameFactory.new
+    @game = factory.create_game(option)
+
     clear_console
     print_board(@game.board)
 

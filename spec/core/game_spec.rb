@@ -1,6 +1,6 @@
 require "rspec"
 require "core/game"
-require "core/players/machine"
+require "core/machine"
 
 RSpec.describe Game do
   before(:each) do

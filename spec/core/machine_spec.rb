@@ -1,6 +1,6 @@
 require "rspec"
 require "core/board"
-require "core/players/machine"
+require "core/machine"
 
 RSpec.describe Machine do
   it "Initializes with a symbol" do

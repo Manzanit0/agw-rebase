@@ -1,6 +1,6 @@
 require "rspec"
 require "core/board"
-require "core/players/machine"
+require "core/machine"
 
 RSpec.describe Board do
   it "Populates the board with tiles on init" do

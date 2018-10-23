@@ -1,5 +1,5 @@
 require "core/board"
-require "core/players/player"
+require "core/player"
 
 class Machine < Player
   def initialize(symbol)

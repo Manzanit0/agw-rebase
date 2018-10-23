@@ -1,4 +1,4 @@
-require "core/players/player"
+require "core/player"
 
 class CliPlayer < Player
   def initialize(symbol, output = $stdout, input = $stdin)
@@ -10,7 +10,7 @@ class CliPlayer < Player
   def get_move(board)
     @out.print "\nPlease input your move (row,column): "
     answer = @in.gets.chomp
-    r = /^([0-9]),([0-9])$/ #FIXME validate also size.
+    r = /^([0-2]),([0-2])$/
 
     until answer.match r
       @out.print "Please input the move with the following format (row,column): "
