@@ -1,4 +1,5 @@
-require 'core/board'
+require "core/board"
+require "core/player"
 
 class Game
   attr_accessor :board, :currentPlayer
@@ -10,8 +11,9 @@ class Game
     @board = Board.new(3) # ATM, hardcoded. Down the road, we inyect it.
   end
 
-  def make_move(row, column)
-    @currentPlayer.make_move(@board, row, column)
+  def make_move
+    @currentPlayer.make_move(@board)
+    toggle_player
   end
 
   def toggle_player

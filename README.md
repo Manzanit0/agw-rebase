@@ -1,7 +1,12 @@
 ### TicTacToe, *Ruby version*
 
+[![Coverage Status](https://coveralls.io/repos/github/Manzanit0/TicTacToeRB/badge.svg?branch=master)](https://coveralls.io/github/Manzanit0/TicTacToeRB?branch=master)
+
 #### Getting started
-To get started simply install the dependecies via [bundler](https://bundler.io/) and run `application.rb`.
+
+Wanna know the fast way? Simply run `./run.sh`.
+
+If you prefer to do it manually, install the dependecies via [bundler](https://bundler.io/) and run `application.rb`.
 
 ##### Example
  ```

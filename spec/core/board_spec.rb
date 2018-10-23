@@ -1,29 +1,28 @@
-require 'rspec'
-require 'spec_helper'
-require 'core/board'
-require 'core/player'
+require "rspec"
+require "core/board"
+require "core/machine"
 
 RSpec.describe Board do
   it "Populates the board with tiles on init" do
     board = Board.new(3)
-    for i in 0..2 do
-      for j in 0..2 do
-        expect(board.tile(i, j)).to eql(' ')
+    for i in 0..2
+      for j in 0..2
+        expect(board.tile(i, j)).to eql(" ")
       end
     end
   end
 
   it "Checks a tile with the player's symbol" do
-    player = Player.new('X')
+    player = Machine.new("X")
     board = Board.new(3)
-    board.check_tile(1,2, player)
-    expect(board.tile(1, 2)).to eql('X')
+    board.check_tile(1, 2, player)
+    expect(board.tile(1, 2)).to eql("X")
   end
 
   it "Validates if all the tiles are checked" do
-    player = Player.new('X')
+    player = Machine.new("X")
     board = Board.new(1)
-    board.check_tile(0,0, player) # In a 1x1, this is the only tile.
+    board.check_tile(0, 0, player) # In a 1x1, this is the only tile.
     expect(board.is_board_complete?).to eql(true)
   end
 
@@ -52,9 +51,9 @@ RSpec.describe Board do
   end
 
   it "Mark the board as finished/won if a player has a whole ROW checked" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
-    for i in 0..2 do
+    for i in 0..2
       board.check_tile(0, i, player1)
     end
 
@@ -62,16 +61,16 @@ RSpec.describe Board do
   end
 
   it "A player hasn't won if there is a tile missing in the middle row" do
-      player1 = Player.new('X')
-      board = Board.new(3)
-      board.check_tile(1, 1, player1)
-      board.check_tile(1, 2, player1)
+    player1 = Machine.new("X")
+    board = Board.new(3)
+    board.check_tile(1, 1, player1)
+    board.check_tile(1, 2, player1)
 
     expect(board.has_won?(player1)).to eql(false)
   end
 
   it "A player hasn't won if there is a tile missing in the last row" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
     board.check_tile(2, 1, player1)
     board.check_tile(2, 2, player1)
@@ -80,17 +79,17 @@ RSpec.describe Board do
   end
 
   it "Mark the board as finished/won if a player has a whole COLUMN checked" do
-      player1 = Player.new('X')
-      board = Board.new(3)
-      for i in 0..2 do
-        board.check_tile(i, 2, player1)
-      end
+    player1 = Machine.new("X")
+    board = Board.new(3)
+    for i in 0..2
+      board.check_tile(i, 2, player1)
+    end
 
     expect(board.has_won?(player1)).to eql(true)
   end
 
   it "A player hasn't won if there is a tile missing in the first column" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
     board.check_tile(0, 0, player1)
     board.check_tile(1, 0, player1)
@@ -99,7 +98,7 @@ RSpec.describe Board do
   end
 
   it "A player hasn't won if there is a tile missing in the last column" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
     board.check_tile(0, 2, player1)
     board.check_tile(1, 2, player1)
@@ -108,48 +107,48 @@ RSpec.describe Board do
   end
 
   it "Mark board as finished/won if a player has the DIAGONAL checked" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
-    board.check_tile(0,0, player1)
-    board.check_tile(1,1, player1)
-    board.check_tile(2,2, player1)
+    board.check_tile(0, 0, player1)
+    board.check_tile(1, 1, player1)
+    board.check_tile(2, 2, player1)
 
     expect(board.has_won?(player1)).to eql(true)
   end
 
   it "A player hasn't won if there is a tile missing in the diagonal" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
-    board.check_tile(0,0, player1)
-    board.check_tile(2,2, player1)
+    board.check_tile(0, 0, player1)
+    board.check_tile(2, 2, player1)
 
     expect(board.has_won?(player1)).to eql(false)
   end
 
   it "A player hasn't won if there is a tile missing in the diagonal (part II)" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
-    board.check_tile(0,0, player1)
-    board.check_tile(1,1, player1)
+    board.check_tile(0, 0, player1)
+    board.check_tile(1, 1, player1)
 
     expect(board.has_won?(player1)).to eql(false)
   end
 
   it "Mark board as finished/won if a player has the ANTI-DIAGONAL checked" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
-    board.check_tile(0,2, player1)
-    board.check_tile(1,1, player1)
-    board.check_tile(2,0, player1)
+    board.check_tile(0, 2, player1)
+    board.check_tile(1, 1, player1)
+    board.check_tile(2, 0, player1)
 
     expect(board.has_won?(player1)).to eql(true)
   end
 
   it "A player hasn't won if there is a tile missing in the anti-diagonal" do
-    player1 = Player.new('X')
+    player1 = Machine.new("X")
     board = Board.new(3)
-    board.check_tile(0,2, player1)
-    board.check_tile(2,0, player1)
+    board.check_tile(0, 2, player1)
+    board.check_tile(2, 0, player1)
 
     expect(board.has_won?(player1)).to eql(false)
   end
