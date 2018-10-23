@@ -1,5 +1,7 @@
 ### TicTacToe, *Ruby version*
 
+[![Coverage Status](https://coveralls.io/repos/github/Manzanit0/TicTacToeRB/badge.svg?branch=master)](https://coveralls.io/github/Manzanit0/TicTacToeRB?branch=master)
+
 #### Getting started
 
 Wanna know the fast way? Simply run `./run.sh`.
