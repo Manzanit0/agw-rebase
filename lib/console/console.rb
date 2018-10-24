@@ -50,6 +50,7 @@ class Console
   end
 
   def play
+    clear_console
     print_menu
     option = get_menu_option
     factory = GameFactory.new
