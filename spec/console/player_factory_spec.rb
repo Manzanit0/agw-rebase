@@ -19,4 +19,9 @@ RSpec.describe PlayerFactory do
     expect(player.instance_of?(Machine)).to eql(true)
     expect(player.symbol).to eql("X")
   end
+
+  it "Raises an error if the option is not valid" do
+    factory = PlayerFactory.new
+    expect{factory.create_player("Terminator", "X")}.to raise_error(NotImplementedError)
+  end
 end

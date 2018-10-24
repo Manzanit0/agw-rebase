@@ -30,4 +30,9 @@ RSpec.describe GameFactory do
     game.toggle_player
     expect(game.currentPlayer.instance_of?(Machine)).to eql(true)
   end
+
+  it "Raises an error if the option is not valid" do
+    factory = GameFactory.new
+    expect{game = factory.create_game("69")}.to raise_error(NotImplementedError)
+  end
 end

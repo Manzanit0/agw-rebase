@@ -19,6 +19,9 @@ class GameFactory
     when "4"
       player1 = p_factory.create_player("Computer", "X")
       player2 = p_factory.create_player("Computer", "O")
+    else
+      raise NotImplementedError.
+        new("#{option}# is not a valid game option.")
     end
 
     game = Game.new(player1, player2)
