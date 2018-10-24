@@ -22,6 +22,14 @@ RSpec.describe GameFactory do
     expect(game.currentPlayer.instance_of?(Machine)).to eql(true)
   end
 
+  it "Creates a Computer vs Human game" do
+    factory = GameFactory.new
+    game = factory.create_game("3")
+
+    expect(game.currentPlayer.instance_of?(Machine)).to eql(true)
+    game.toggle_player
+    expect(game.currentPlayer.instance_of?(CliPlayer)).to eql(true)
+  end
   it "Creates a Computer vs Computer game" do
     factory = GameFactory.new
     game = factory.create_game("4")
@@ -33,6 +41,6 @@ RSpec.describe GameFactory do
 
   it "Raises an error if the option is not valid" do
     factory = GameFactory.new
-    expect{game = factory.create_game("69")}.to raise_error(NotImplementedError)
+    expect{factory.create_game("69")}.to raise_error(NotImplementedError)
   end
 end

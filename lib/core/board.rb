@@ -19,10 +19,6 @@ class Board
     @board[row][column]
   end
 
-  def row(row)
-    @board[row]
-  end
-
   def column(column)
     tiles = []
     @board.each do |row|

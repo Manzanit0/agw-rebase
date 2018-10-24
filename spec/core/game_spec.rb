@@ -19,6 +19,13 @@ RSpec.describe Game do
     expect(@game.currentPlayer).to eql(@player2)
   end
 
+  it "Marks a tile in the board with the current player" do
+    @game.make_move
+
+    expect(@game.board.tile(0,0)).to eql("X")
+    expect(@game.currentPlayer.symbol).to eql("O")
+  end
+
   it "Mark the @game as ended if there are no tiles free" do
     for i in 0..2
       for j in 0..2
