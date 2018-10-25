@@ -6,7 +6,7 @@ require "core/machine"
 RSpec.describe PlayerFactory do
   it "Creates a Human Player" do
     factory = PlayerFactory.new
-    player = factory.create_player("Human", "X")
+    player = factory.create_player(PlayerOptions::Human, "X")
 
     expect(player.instance_of?(CliPlayer)).to eql(true)
     expect(player.symbol).to eql("X")
@@ -14,7 +14,7 @@ RSpec.describe PlayerFactory do
 
   it "Creates a Computer Player" do
     factory = PlayerFactory.new
-    player = factory.create_player("Computer", "X")
+    player = factory.create_player(PlayerOptions::Machine, "X")
 
     expect(player.instance_of?(Machine)).to eql(true)
     expect(player.symbol).to eql("X")

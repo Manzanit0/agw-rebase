@@ -3,9 +3,9 @@ require "core/game"
 
 module GameOptions
   HUMAN_VS_HUMAN = "1"
-  HUMAN_VS_COMPUTER = "2"
-  COMPUTER_VS_HUMAN = "3"
-  COMPUTER_VS_COMPUTER = "4"
+  HUMAN_VS_MACHINE = "2"
+  MACHINE_VS_HUMAN = "3"
+  MACHINE_VS_MACHINE = "4"
 end
 
 class GameFactory
@@ -15,17 +15,17 @@ class GameFactory
 
     case option
     when GameOptions::HUMAN_VS_HUMAN
-      player1 = p_factory.create_player("Human", "X")
-      player2 = p_factory.create_player("Human", "O")
-    when GameOptions::HUMAN_VS_COMPUTER
-      player1 = p_factory.create_player("Human", "X")
-      player2 = p_factory.create_player("Computer", "O")
-    when GameOptions::COMPUTER_VS_HUMAN
-      player1 = p_factory.create_player("Computer", "X")
-      player2 = p_factory.create_player("Human", "O")
-    when GameOptions::COMPUTER_VS_COMPUTER
-      player1 = p_factory.create_player("Computer", "X")
-      player2 = p_factory.create_player("Computer", "O")
+      player1 = p_factory.create_player(PlayerOptions::Human, "X")
+      player2 = p_factory.create_player(PlayerOptions::Human, "O")
+    when GameOptions::HUMAN_VS_MACHINE
+      player1 = p_factory.create_player(PlayerOptions::Human, "X")
+      player2 = p_factory.create_player(PlayerOptions::Machine, "O")
+    when GameOptions::MACHINE_VS_HUMAN
+      player1 = p_factory.create_player(PlayerOptions::Machine, "X")
+      player2 = p_factory.create_player(PlayerOptions::Human, "O")
+    when GameOptions::MACHINE_VS_MACHINE
+      player1 = p_factory.create_player(PlayerOptions::Machine, "X")
+      player2 = p_factory.create_player(PlayerOptions::Machine, "O")
     else
       raise NotImplementedError.
         new("#{option}# is not a valid game option.")
