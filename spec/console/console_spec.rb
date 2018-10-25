@@ -10,9 +10,9 @@ RSpec.describe Console do
     @console = Console.new(@output)
   end
 
-  it "Prints an empty board at the start of the game" do
+  it "Prints the board with correct formatting" do
     EMPTY_BOARD = <<~HEREDOC
-
+      \e[H\e[2J
       _____________
       |   |   |   | 
       _____________
@@ -23,7 +23,7 @@ RSpec.describe Console do
     HEREDOC
 
     board = @game.board
-    @console.print_board(board)
+    @console.send(:print_board, board)
 
     expect(@output.string).to eql(EMPTY_BOARD)
   end
@@ -32,24 +32,40 @@ RSpec.describe Console do
     EXPECTED_OUTPUT = "| X |   | O | "
     @game.board.check_tile(1, 0, @player1)
     @game.board.check_tile(1, 2, @player2)
-    @console.print_row(@game.board, 1)
+    @console.send(:print_row, @game.board, 1)
 
     expect(@output.string).to eql(EXPECTED_OUTPUT)
   end
 
-  it "Gets the game mode option from User input" do
+  it "Gets the game mode option from user input" do
     input = StringIO.new("1")
     @console = Console.new(@output, input)
 
-    expect(@console.get_menu_option).to eql("1")
+    expect(@console.send(:get_menu_option)).to eql("1")
   end
 
   it "When a user inputs an incorrect game option, it gets reprompted" do
     input = StringIO.new("g\n1")
     @console = Console.new(@output, input)
 
-    expect(@console.get_menu_option).to eql("1")
+    expect(@console.send(:get_menu_option)).to eql("1")
   end
 
-  #TODO Test play method - The loop. Should we extract that logic? Yes.
+  it "Initializes the game with user input" do
+    input = StringIO.new("1")
+    @console = Console.new(@output, input)
+    @console.send(:init_game)
+
+    expect(@console.game).not_to eql(nil)
+  end
+
+  it "Makes moves until one player has won or it's a draw" do
+    output = StringIO.new
+    input = StringIO.new(GameOptions::MACHINE_VS_MACHINE)
+    @console = Console.new(output, input)
+
+    @console.play
+
+    expect(@console.game.has_ended?).to eql(true)
+  end
 end
