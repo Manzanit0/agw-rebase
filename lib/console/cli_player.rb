@@ -12,13 +12,16 @@ class CliPlayer < Player
     answer = @in.gets.chomp
     r = /^([0-2]),([0-2])$/
 
-    until answer.match r
-      @out.print "Please input the move with the following format (row,column): "
+    until answer.match(r) && board.is_free?(parse_input(answer))
+      @out.print "Please input a valid move with the following format (row,column): "
       answer = @in.gets.chomp
     end
 
-    # TODO validate move is not taken.
+    parse_input(answer)
+  end
 
+  private
+  def parse_input(answer)
     answer.split(",").map { |s| s.to_i }
   end
 end

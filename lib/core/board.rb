@@ -60,6 +60,10 @@ class Board
     true
   end
 
+  def is_free?(move)
+    @board[move[0]][move[1]] == UNCHECKED_TILE
+  end
+
   def has_won?(player)
     column_win, row_win, diagonal_win, anti_diagonal_win = true, true, true, true
 
