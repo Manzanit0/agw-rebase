@@ -12,7 +12,7 @@ class Console
     @out.puts "2. Human vs Computer"
     @out.puts "3. Computer vs Human"
     @out.puts "4. Computer vs Computer\n"
-    @out.print " Choose a game mode to begin (1-4): "
+    @out.print "Choose a game mode to begin (1-4): "
   end
 
   def get_menu_option
