@@ -54,7 +54,7 @@ RSpec.describe Console do
   it "Initializes the game with user input" do
     input = StringIO.new("1")
     @console = Console.new(@output, input)
-    @console.send(:init_game)
+    @console.send(:setup_game)
 
     expect(@console.game).not_to eql(nil)
   end

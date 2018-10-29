@@ -9,7 +9,7 @@ class Console
   end
 
   def play
-    init_game
+    setup_game
     until @game.has_ended?
       process_turn
     end
@@ -18,11 +18,11 @@ class Console
 
   private
 
-  def init_game
+  def setup_game
+    factory = GameFactory.new
     print_menu
 
     options = get_menu_option
-    factory = GameFactory.new
     @game = factory.create_game(options)
 
     print_board(@game.board)
