@@ -6,7 +6,7 @@ require "console/game_factory"
 RSpec.describe GameFactory do
   it "Creates a Human vs Human game" do
     factory = GameFactory.new
-    game = factory.create_game("1")
+    game = factory.create_game(GameOptions::HUMAN_VS_HUMAN)
 
     expect(game.currentPlayer.instance_of?(CliPlayer)).to eql(true)
     game.toggle_player # TODO: This is a smell - Find out if there is a way of checking private variables
@@ -15,7 +15,7 @@ RSpec.describe GameFactory do
 
   it "Creates a Human vs Computer game" do
     factory = GameFactory.new
-    game = factory.create_game("2")
+    game = factory.create_game(GameOptions::HUMAN_VS_MACHINE)
 
     expect(game.currentPlayer.instance_of?(CliPlayer)).to eql(true)
     game.toggle_player
@@ -24,7 +24,7 @@ RSpec.describe GameFactory do
 
   it "Creates a Computer vs Human game" do
     factory = GameFactory.new
-    game = factory.create_game("3")
+    game = factory.create_game(GameOptions::MACHINE_VS_HUMAN)
 
     expect(game.currentPlayer.instance_of?(Machine)).to eql(true)
     game.toggle_player
@@ -32,7 +32,7 @@ RSpec.describe GameFactory do
   end
   it "Creates a Computer vs Computer game" do
     factory = GameFactory.new
-    game = factory.create_game("4")
+    game = factory.create_game(GameOptions::MACHINE_VS_MACHINE)
 
     expect(game.currentPlayer.instance_of?(Machine)).to eql(true)
     game.toggle_player
