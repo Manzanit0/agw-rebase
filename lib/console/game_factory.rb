@@ -31,6 +31,6 @@ class GameFactory
         new("#{option}# is not a valid game option.")
     end
 
-    game = Game.new(player1, player2)
+    Game.new(player1, player2)
   end
 end

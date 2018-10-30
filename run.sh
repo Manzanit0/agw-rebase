@@ -7,5 +7,6 @@ $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 require "console/console"
 
-console = Console.new
+io = ConsoleIO.new
+console = Console.new(io)
 console.play
