@@ -9,14 +9,14 @@ RSpec.describe ConsoleIO do
       \e[H\e[2J
       --- GAME MODES ---
       1. Human vs Human
-      2. Human vs Computer
-      3. Computer vs Human
-      4. Computer vs Computer
+      2. Human vs AI
+      3. AI vs Human
+      4. AI vs AI
 
       -- Hard Mode  --
-      5. Human vs Computer
-      6. Computer vs Human
-      7. Computer vs Computer
+      5. Human vs AI
+      6. AI vs Human
+      7. AI vs AI
     HEREDOC
 
     output = StringIO.new

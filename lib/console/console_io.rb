@@ -19,13 +19,13 @@ class ConsoleIO
     clear_console
     @out.puts "\n--- GAME MODES ---\n"
     @out.puts "#{GameOptions::HUMAN_VS_HUMAN}. Human vs Human"
-    @out.puts "#{GameOptions::HUMAN_VS_MACHINE}. Human vs Computer"
-    @out.puts "#{GameOptions::MACHINE_VS_HUMAN}. Computer vs Human"
-    @out.puts "#{GameOptions::MACHINE_VS_MACHINE}. Computer vs Computer\n"
+    @out.puts "#{GameOptions::HUMAN_VS_MACHINE}. Human vs AI"
+    @out.puts "#{GameOptions::MACHINE_VS_HUMAN}. AI vs Human"
+    @out.puts "#{GameOptions::MACHINE_VS_MACHINE}. AI vs AI\n"
     @out.puts "\n-- Hard Mode  --"
-    @out.puts "#{GameOptions::HUMAN_VS_HARD_MACHINE}. Human vs Computer\n"
-    @out.puts "#{GameOptions::HARD_MACHINE_VS_HUMAN}. Computer vs Human\n"
-    @out.puts "#{GameOptions::HARD_MACHINE_VS_HARD_MACHINE}. Computer vs Computer\n"
+    @out.puts "#{GameOptions::HUMAN_VS_HARD_MACHINE}. Human vs AI\n"
+    @out.puts "#{GameOptions::HARD_MACHINE_VS_HUMAN}. AI vs Human\n"
+    @out.puts "#{GameOptions::HARD_MACHINE_VS_HARD_MACHINE}. AI vs AI\n"
   end
 
   def print_row(board, row)
