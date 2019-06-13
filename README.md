@@ -5,8 +5,11 @@ The repository has two branches: `main` and `feature-branch`. Whenever new code 
 is to merge successfully `feature-branch` into `main` without conflicts and with all the tests passing
 so the pipeline can deliver the latest version of the application to its customers.
 
-In order to achieve it, make use of `git rebase`. In case you run into any conflicts when rebasing,
+In order to achieve it, **make use of `git rebase`**. In case you run into any conflicts when rebasing,
 choose the code in your feature branch and discard that of `main`.
+
+To finalize, before finishing, **squash all the commits** of `feature-branch` into a single commit in order
+to make the whole feature self-contained when merged.
 
 ## Helpful commands
 
