@@ -7,6 +7,10 @@ RSpec.describe ConsoleIO do
   it "displays the menu with all options" do
     MENU = <<~HEREDOC
       \e[H\e[2J
+      >> Yet another Tictactoe!
+
+      To start a game, please select one of the below game modes
+
       --- GAME MODES ---
       1. Human vs Human
       2. Human vs Computer

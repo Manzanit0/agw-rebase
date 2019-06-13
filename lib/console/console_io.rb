@@ -17,6 +17,8 @@ class ConsoleIO
 
   def print_menu
     clear_console
+    @out.puts "\n>> Yet another Tictactoe!\n"
+    @out.puts "\nTo start a game, please select one of the below game modes\n"
     @out.puts "\n--- GAME MODES ---\n"
     @out.puts "#{GameOptions::HUMAN_VS_HUMAN}. Human vs Human"
     @out.puts "#{GameOptions::HUMAN_VS_MACHINE}. Human vs Computer"
