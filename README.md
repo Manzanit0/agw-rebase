@@ -1,16 +1,31 @@
-### TicTacToe, *Ruby version*
+# Git rebase exercise
 
-[![Coverage Status](https://coveralls.io/repos/github/Manzanit0/TicTacToeRB/badge.svg?branch=master)](https://coveralls.io/github/Manzanit0/TicTacToeRB?branch=master)
+The repository has two branches: `main` and `feature-branch`. Whenever new code gets merged into
+`main` there is a CI/CD pipeline which deploys it to the production server. Your job, as a developer,
+is to merge successfully `feature-branch` into `main` without conflicts and with all the tests passing
+so the pipeline can deliver the latest version of the application to its customers.
 
-#### Getting started
+In order to achieve it, make use of `git rebase`. In case you run into any conflicts when rebasing,
+choose the code in your feature branch and discard that of `main`.
 
-Install the dependecies via [bundler](https://bundler.io/) and then simply run `./run` to play.
+## Helpful commands
 
-##### Example
- ```
- gem install bundler        # Installs Bundler
- bundler install            # Installs all dependencies
- ./run                      # Runs the application
- ```
- 
- The tests have been done with [RSpec](http://rspec.info/).
+For rebase:
+
+```
+$ git rebase -i <branch_to_merge>
+$ git rebase --continue
+$ git rebase --abort
+$ git rebase -h
+```
+
+The project is using Ruby & RSpec, so in order to compile, run the tests,
+etc. pick the following commands:
+
+```
+$ gem install bundler # In case you don't have bundler
+$ bundler install     # To install dependencies
+$ ./run               # To run the application
+$ ruby <file_name>    # To execute a certain ruby script
+$ rspec               # To run all tests
+```
